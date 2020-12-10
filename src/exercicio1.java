@@ -1,37 +1,35 @@
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Exercicio1 {
-	
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-            int size = 20; 
-            int a[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-            int b[] = new int[size + 1]; 
-            int i; 
-            
-            System.out.print("Vetor A com 20 elementos: ");
-            for (i = 0; i < size; i++) {
-                System.out.print(a[i] + ",");
-            }
-            
-            System.out.print("\nVetor B com elementos pares: ");
-            for (i = 1; i <= size; i++) {
-            	if (i % 2 == 0) {
-            		b[i] = i;
-                    System.out.print(b[i] + ",");
-            	}
-            }
-            
-            System.out.print("\nVetor B com elementos ímpares: ");
-            for (i = 0; i < size; i++) {
-            	if (i % 2 != 0) {
-            		b[i] = i;
-                    System.out.print(b[i] + ",");
-            	}
-            }
+        var scanner = new Scanner(System.in);
+        int[] a = new int[20];
+        for (int i = 0; i < a.length; i++) {
+            System.out.printf("Type the number for vector position %d: ", i);
+            a[i] = scanner.nextInt();
+        }
+        printVector("A", a);
 
-
-        in.close();
+        int[] b = new int[20];
+        int indexEven = 0;
+        int indexOdd = 19;
+        for (int number : a) {
+            if(number % 2 == 0) {
+                b[indexEven++] = number;
+            } else {
+                b[indexOdd--] = number;
+            }
+        }
+        printVector("B", b);
     }
 
+    private static void printVector(String vectorName, int[] a) {
+        System.out.printf("Numbers Vector %s: ", vectorName);
+        for (int number : a) {
+            System.out.printf(" %d ", number);
+        }
+        System.out.println();
+    }
 }
